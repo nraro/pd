@@ -5,8 +5,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Initial commit</p>
+        <p>Init commit</p>
       </header>
     </div>
   );
