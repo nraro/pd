@@ -4,7 +4,7 @@ import {
   getFirestore,
   collection,
   getDocs,
-  Firestore,
+  addDoc,
 } from "firebase/firestore/lite";
 
 const firebaseConfig = {
@@ -25,19 +25,21 @@ const getProducts = async () => {
 };
 
 // Future dev of posting data
-// const postData = () => {
-//   const bestArr = [];
-//   for (let i = 0; i < 100; i++) {
-//     let bestObj = {};
-//     bestObj = { test: "salve", index: i };
-//     bestArr.push(bestObj);
-//   }
-//   Firestore.collection("test-col").add({ bestArr });
-//   console.log(bestArr);
-//   return bestArr;
-// };
-
-// postData();
+const postData = () => {
+  const bestArr = [];
+  for (let i = 0; i < 100; i++) {
+    let bestObj = {};
+    bestObj = {
+      index: i,
+      name: "Best name",
+      age: i + Math.random(),
+    };
+    bestArr.push(bestObj);
+  }
+  console.log(bestArr);
+  return bestArr;
+};
+postData();
 
 const GetDb = () => {
   const [data, setData] = useState([]);
