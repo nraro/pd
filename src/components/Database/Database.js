@@ -5,6 +5,7 @@ import {
   collection,
   getDocs,
   addDoc,
+  serverTimestamp,
 } from "firebase/firestore/lite";
 
 const firebaseConfig = {
@@ -18,28 +19,27 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const getProducts = async () => {
-  const dbCol = collection(db, "test-col");
+  const dbCol = collection(db, "new-test-col");
   const dbSnap = await getDocs(dbCol);
   const dbList = dbSnap.docs.map((doc) => doc.data());
   return dbList;
 };
 
-// Future dev of posting data
-const postData = () => {
-  const bestArr = [];
-  for (let i = 0; i < 100; i++) {
-    let bestObj = {};
-    bestObj = {
-      index: i,
-      name: "Best name",
-      age: i + Math.random(),
-    };
-    bestArr.push(bestObj);
-  }
-  console.log(bestArr);
-  return bestArr;
-};
-postData();
+// Start of dummy data batch creation
+// const createNewData = () => {
+//   const dataCol = collection(db, "new-test-col");
+
+//   for (let i = 0; i < 100; i++) {
+//     console.log(i);
+//     addDoc(dataCol, {
+//       name: "Best name",
+//       index: i,
+//       created: serverTimestamp(),
+//     });
+//   }
+// };
+// createNewData();
+// End of dummy data batch creation
 
 const GetDb = () => {
   const [data, setData] = useState([]);
@@ -55,8 +55,9 @@ const GetDb = () => {
   return data.map((x, index) => {
     return (
       <div key={index}>
-        <span>{x.field1}</span>
-        <span>{x.field2}</span>
+        <span>
+          {x.name} {x.index}
+        </span>
       </div>
     );
   });
