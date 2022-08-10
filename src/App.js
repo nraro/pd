@@ -1,11 +1,12 @@
-import logo from "./logo.svg";
+import React from "react";
 import "./App.css";
+import GetDb from "./components/Database/Database";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>Init commit</p>
+        <GetDb></GetDb>
       </header>
     </div>
   );
